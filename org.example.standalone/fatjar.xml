@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project org.example.standalone with Jar-in-Jar Loader">
+    <!--this file was created by Eclipse Runnable JAR file Export Wizard-->
+    <!--ANT 1.7 is required-->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="C:/Users/bettini/workspaces/fatjar"/>
+    <property name="dir.jarfile" value="C:/Users/bettini/tmp"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/fatjar-example.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="org.example.standalone.Main"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ org.eclipse.core.runtime_3.12.0.v20160222-1238.jar javax.inject_1.0.0.v20091030.jar org.eclipse.osgi_3.11.0.v20160309-1913.jar org.eclipse.osgi.compatibility.state_1.0.100.v20150709-1617.jar org.eclipse.equinox.common_3.8.0.v20160315-1450.jar org.eclipse.core.jobs_3.8.0.v20160209-0147.jar org.eclipse.equinox.registry_3.6.100.v20160223-2218.jar org.eclipse.equinox.preferences_3.6.0.v20160120-1756.jar org.eclipse.core.contenttype_3.5.100.v20160310-1346.jar org.eclipse.equinox.app_1.3.400.v20150715-1528.jar org.eclipse.emf.ecore_2.12.0.v20160315-0423.jar org.eclipse.emf.common_2.12.0.v20160315-0423.jar org.eclipse.emf.ecore.xmi_2.12.0.v20160315-0423.jar"/>
+            </manifest>
+            <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="C:/Users/bettini/repositories/fatjar-example/org.example.model/bin"/>
+            <zipfileset dir="C:/Users/bettini/eclipse/p2.shared/pool/plugins" includes="org.eclipse.core.runtime_3.12.0.v20160222-1238.jar"/>
+            <zipfileset dir="C:/Users/bettini/eclipse/p2.shared/pool/plugins" includes="javax.inject_1.0.0.v20091030.jar"/>
+            <zipfileset dir="C:/Users/bettini/eclipse/p2.shared/pool/plugins" includes="org.eclipse.osgi_3.11.0.v20160309-1913.jar"/>
+            <zipfileset dir="C:/Users/bettini/eclipse/p2.shared/pool/plugins" includes="org.eclipse.osgi.compatibility.state_1.0.100.v20150709-1617.jar"/>
+            <zipfileset dir="C:/Users/bettini/eclipse/p2.shared/pool/plugins" includes="org.eclipse.equinox.common_3.8.0.v20160315-1450.jar"/>
+            <zipfileset dir="C:/Users/bettini/eclipse/p2.shared/pool/plugins" includes="org.eclipse.core.jobs_3.8.0.v20160209-0147.jar"/>
+            <zipfileset dir="C:/Users/bettini/eclipse/p2.shared/pool/plugins" includes="org.eclipse.equinox.registry_3.6.100.v20160223-2218.jar"/>
+            <zipfileset dir="C:/Users/bettini/eclipse/p2.shared/pool/plugins" includes="org.eclipse.equinox.preferences_3.6.0.v20160120-1756.jar"/>
+            <zipfileset dir="C:/Users/bettini/eclipse/p2.shared/pool/plugins" includes="org.eclipse.core.contenttype_3.5.100.v20160310-1346.jar"/>
+            <zipfileset dir="C:/Users/bettini/eclipse/p2.shared/pool/plugins" includes="org.eclipse.equinox.app_1.3.400.v20150715-1528.jar"/>
+            <zipfileset dir="C:/Users/bettini/eclipse/p2.shared/pool/plugins" includes="org.eclipse.emf.ecore_2.12.0.v20160315-0423.jar"/>
+            <zipfileset dir="C:/Users/bettini/eclipse/p2.shared/pool/plugins" includes="org.eclipse.emf.common_2.12.0.v20160315-0423.jar"/>
+            <zipfileset dir="C:/Users/bettini/eclipse/p2.shared/pool/plugins" includes="org.eclipse.emf.ecore.xmi_2.12.0.v20160315-0423.jar"/>
+            <fileset dir="${dir.buildfile}/bin"/>
+        </jar>
+    </target>
+</project>
