@@ -50,6 +50,23 @@
 							<goal>run</goal>
 						</goals>
 					</execution>
+					<execution>
+						<id>integration-test</id>
+						<phase>integration-test</phase>
+						<configuration>
+							<target>
+								<echo message="Running the executable Jar-in-Jar" />
+								<exec executable="java" failonerror="true">
+									<arg value="-jar" />
+									<arg value="${project.build.directory}/${project.artifactId}-fat-jar-in-jar-${project.version}.jar" />
+									<arg value="${project.basedir}/test-resources/test.xmi" />
+								</exec>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
