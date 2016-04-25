@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project default="create_run_jar" name="Create Runnable Jar for Project org.example.standalone with Jar-in-Jar Loader">
-    <!--ANT 1.7 is required-->
-    <!--define folder properties-->
-	<property name="project.build.directory" value="${basedir}/target"/>
-	<property name="dir.buildfile" value="${project.build.directory}"/>
-	<property name="dir.classes" value="${dir.buildfile}/classes"/>
-	<property name="dir.lib" value="${dir.buildfile}/lib"/>
-    <property name="dir.workspace" value="C:/Users/bettini/workspaces/fatjar"/>
-    <property name="dir.jarfile" value="${dir.buildfile}"/>
-    <property name="jar.filename" value="fatjar-example.jar"/>
-    <property name="jar.file" value="${dir.jarfile}/${jar.filename}"/>
-    <target name="create_run_jar">
-    	<path id="build-classpath">
-    	   <fileset dir="${dir.lib}"/>
-    	</path>
+	<!--ANT 1.7 is required-->
+	<!--define folder properties-->
+	<property name="project.build.directory" value="${basedir}/target" />
+	<property name="dir.buildfile" value="${project.build.directory}" />
+	<property name="dir.classes" value="${dir.buildfile}/classes" />
+	<property name="dir.lib" value="${dir.buildfile}/lib" />
+	<property name="dir.workspace" value="C:/Users/bettini/workspaces/fatjar" />
+	<property name="dir.jarfile" value="${dir.buildfile}" />
+	<property name="jar.filename" value="fatjar-example.jar" />
+	<property name="jar.file" value="${dir.jarfile}/${jar.filename}" />
+	<target name="create_run_jar">
+		<path id="build-classpath">
+			<fileset dir="${dir.lib}" />
+		</path>
 
-    	<manifestclasspath property="lib.list" jarfile="${jar.file}">
-    	   <classpath refid="build-classpath" />
-    	</manifestclasspath>
+		<manifestclasspath property="lib.list" jarfile="${jar.file}">
+			<classpath refid="build-classpath" />
+		</manifestclasspath>
 
-        <jar destfile="${jar.file}">
-            <manifest>
-                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
-                <attribute name="Rsrc-Main-Class" value="org.example.standalone.Main"/>
-                <attribute name="Class-Path" value="."/>
-                <attribute name="Rsrc-Class-Path" value="./ ${lib.list}"/>
-            </manifest>
-            <zipfileset src="jar-in-jar-loader.zip"/>
-            <fileset dir="${dir.classes}"/>
-            <zipfileset dir="${dir.lib}"/>
-        </jar>
-    </target>
+		<jar destfile="${jar.file}">
+			<manifest>
+				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+				<attribute name="Rsrc-Main-Class" value="org.example.standalone.Main" />
+				<attribute name="Class-Path" value="." />
+				<attribute name="Rsrc-Class-Path" value="./ ${lib.list}" />
+			</manifest>
+			<zipfileset src="jar-in-jar-loader.zip" />
+			<fileset dir="${dir.classes}" />
+			<zipfileset dir="${dir.lib}" />
+		</jar>
+	</target>
 </project>
