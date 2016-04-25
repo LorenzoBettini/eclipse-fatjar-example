@@ -20,12 +20,24 @@
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
+						<id>copy-dependencies</id>
 						<phase>prepare-package</phase>
 						<goals>
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
 							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>unpack-dependencies</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/libs</outputDirectory>
+							<useSubDirectoryPerArtifact>true</useSubDirectoryPerArtifact>
 						</configuration>
 					</execution>
 				</executions>
@@ -43,6 +55,7 @@
 								<ant antfile="${project.basedir}/fat-jar-in-jar.xml">
 								<property name="jar.filename"
 									value="${project.artifactId}-fat-jar-in-jar-${project.version}.jar"/>
+								<property name="main.class" value="org.example.standalone.Main" />
 								</ant>
 							</target>
 						</configuration>
