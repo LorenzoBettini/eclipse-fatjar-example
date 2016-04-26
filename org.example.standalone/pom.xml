@@ -13,6 +13,10 @@
 	<artifactId>org.example.standalone</artifactId>
 
 	<packaging>eclipse-plugin</packaging>
+	
+	<properties>
+		<dir.lib>${project.build.directory}/lib</dir.lib>
+	</properties>
 
 	<build>
 		<plugins>
@@ -26,7 +30,7 @@
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+							<outputDirectory>${dir.lib}</outputDirectory>
 						</configuration>
 					</execution>
 					<execution>
@@ -68,6 +72,8 @@
 						<phase>integration-test</phase>
 						<configuration>
 							<target>
+								<!-- delete lib dir to make sure we use the jars in the jar -->
+								<delete dir="${dir.lib}" />
 								<echo message="Running the executable Jar-in-Jar" />
 								<exec executable="java" failonerror="true">
 									<arg value="-jar" />
