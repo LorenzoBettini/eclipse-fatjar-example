@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project org.example.standalone">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="/home/bettini/workspaces/xtext-book"/>
+    <property name="dir.jarfile" value="/tmp"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/Untitled.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="org.example.standalone.Main"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="/home/bettini/work/eclipse/tycho/fatjar-example/org.example.model/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/bettini/eclipse/bundlepool/plugins/org.eclipse.core.runtime_3.12.0.v20160222-1238.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/bettini/eclipse/bundlepool/plugins/javax.inject_1.0.0.v20091030.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/bettini/eclipse/bundlepool/plugins/org.eclipse.osgi_3.11.0.v20160309-1913.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/bettini/eclipse/bundlepool/plugins/org.eclipse.osgi.compatibility.state_1.0.100.v20150709-1617.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/bettini/eclipse/bundlepool/plugins/org.eclipse.equinox.common_3.8.0.v20160315-1450.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/bettini/eclipse/bundlepool/plugins/org.eclipse.core.jobs_3.8.0.v20160209-0147.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/bettini/eclipse/bundlepool/plugins/org.eclipse.equinox.registry_3.6.100.v20160223-2218.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/bettini/eclipse/bundlepool/plugins/org.eclipse.equinox.preferences_3.6.0.v20160120-1756.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/bettini/eclipse/bundlepool/plugins/org.eclipse.core.contenttype_3.5.100.v20160310-1346.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/bettini/eclipse/bundlepool/plugins/org.eclipse.equinox.app_1.3.400.v20150715-1528.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/bettini/eclipse/bundlepool/plugins/org.eclipse.emf.ecore_2.12.0.v20160420-0247.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/bettini/eclipse/bundlepool/plugins/org.eclipse.emf.common_2.12.0.v20160420-0247.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/bettini/eclipse/bundlepool/plugins/org.eclipse.emf.ecore.xmi_2.12.0.v20160420-0247.jar"/>
+            <fileset dir="${dir.buildfile}/bin"/>
+        </jar>
+    </target>
+</project>
