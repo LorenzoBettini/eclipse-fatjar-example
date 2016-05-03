@@ -16,6 +16,7 @@
 	
 	<properties>
 		<dir.lib>${project.build.directory}/lib</dir.lib>
+		<dir.libs>${project.build.directory}/libs</dir.libs>
 	</properties>
 
 	<build>
@@ -40,7 +41,7 @@
 							<goal>unpack-dependencies</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}/libs</outputDirectory>
+							<outputDirectory>${dir.libs}</outputDirectory>
 							<useSubDirectoryPerArtifact>true</useSubDirectoryPerArtifact>
 						</configuration>
 					</execution>
@@ -52,7 +53,7 @@
 				<version>1.8</version>
 				<executions>
 					<execution>
-						<id>package</id>
+						<id>package-jar-in-jar</id>
 						<phase>package</phase>
 						<configuration>
 							<target>
@@ -68,7 +69,23 @@
 						</goals>
 					</execution>
 					<execution>
-						<id>integration-test</id>
+						<id>package-jar</id>
+						<phase>package</phase>
+						<configuration>
+							<target>
+								<ant antfile="${project.basedir}/fat-jar.xml">
+								<property name="jar.filename"
+									value="${project.artifactId}-fat-jar-${project.version}.jar"/>
+								<property name="main.class" value="org.example.standalone.Main" />
+								</ant>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>test-jar-in-jar</id>
 						<phase>integration-test</phase>
 						<configuration>
 							<target>
@@ -78,6 +95,25 @@
 								<exec executable="java" failonerror="true">
 									<arg value="-jar" />
 									<arg value="${project.build.directory}/${project.artifactId}-fat-jar-in-jar-${project.version}.jar" />
+									<arg value="${project.basedir}/test-resources/test.xmi" />
+								</exec>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>test-jar</id>
+						<phase>integration-test</phase>
+						<configuration>
+							<target>
+								<!-- delete libs dir to make sure we use the contents in the jar -->
+								<delete dir="${dir.libs}" />
+								<echo message="Running the executable Jar-in-Jar" />
+								<exec executable="java" failonerror="true">
+									<arg value="-jar" />
+									<arg value="${project.build.directory}/${project.artifactId}-fat-jar-${project.version}.jar" />
 									<arg value="${project.basedir}/test-resources/test.xmi" />
 								</exec>
 							</target>
