@@ -6,13 +6,13 @@
 	<property name="project.build.directory" value="${basedir}/target" />
 	<property name="dir.buildfile" value="${project.build.directory}" />
 	<property name="dir.classes" value="${dir.buildfile}/classes" />
-	<property name="dir.lib" value="${dir.buildfile}/libs" />
+	<property name="dir.libs" value="${dir.buildfile}/libs" />
 	<property name="dir.jarfile" value="${dir.buildfile}" />
 	<property name="jar.filename" value="fatjar-example.jar" />
 	<property name="jar.file" value="${dir.jarfile}/${jar.filename}" />
 	<target name="create_run_jar">
 		<path id="build-classpath">
-			<dirset dir="${dir.lib}">
+			<dirset dir="${dir.libs}">
 				<depth max="0" />
 			</dirset>
 		</path>
@@ -39,7 +39,7 @@
 			</manifest>
 			<zipfileset src="jar-in-jar-loader.zip" />
 			<fileset dir="${dir.classes}" />
-			<zipfileset dir="${dir.lib}" />
+			<zipfileset dir="${dir.libs}" />
 		</jar>
 	</target>
 </project>
